@@ -46,20 +46,7 @@ ROOT = HERE.parent
 
 logger = logging.getLogger(__name__)
 
-# Function to create a markdown link for automatic download
-def create_download_link(url, filename):
-    return f'<a href="{url}" download="{filename}">Click here to download {filename}</a>'
-
-# URL of the file to be downloaded
-file_url = "https://github.com/oracl4/RoadDamageDetection/raw/main/models/YOLOv8_Small_RDD.pt"
-
-# File name (specify the name you want the downloaded file to have)
-filename = "YOLOv8_Small_RDD.pt"
-
-# Display a markdown link that triggers the file download
-st.markdown(create_download_link(file_url, filename), unsafe_allow_html=True)
-
-MODEL_URL = "https://github.com/ShashangDhoriyani/RoadCrackDetection/blob/main/models/YOLOv8_Small_RDD.pt" 
+MODEL_URL = "https://github.com/oracl4/RoadDamageDetection/raw/main/models/YOLOv8_Small_RDD.pt" 
 MODEL_LOCAL_PATH = ROOT / "./models/YOLOv8_Small_RDD.pt"
 download_file(MODEL_URL, MODEL_LOCAL_PATH, expected_size=89569358)
 
