@@ -46,7 +46,7 @@ ROOT = HERE.parent
 
 logger = logging.getLogger(__name__)
 
-MODEL_URL = "https://github.com/oracl4/RoadDamageDetection/raw/main/models/YOLOv8_Small_RDD.pt" 
+MODEL_URL = "https://github.com/ShashangDhoriyani/RoadCrackDetection/raw/main/models/YOLOv8_Small_RDD.pt" 
 MODEL_LOCAL_PATH = ROOT / "./models/YOLOv8_Small_RDD.pt"
 download_file(MODEL_URL, MODEL_LOCAL_PATH, expected_size=89569358)
 
