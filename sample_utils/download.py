@@ -22,9 +22,11 @@ def download_file(url, download_to: Path, expected_size=None):
             with urllib.request.urlopen(url) as response:
                 content_length_header = response.info().get("Content-Length")
                 if content_length_header is None:
-                    raise ValueError("Content-Length header is missing in the response.")
-
-                length = int(content_length_header)
+                    st.warning("Content-Length header is missing. Downloading without content length.")
+                    length = None
+                else:
+                    length = int(content_length_header)
+                    
                 counter = 0.0
                 MEGABYTES = 2.0 ** 20.0
                 while True:
@@ -34,11 +36,17 @@ def download_file(url, download_to: Path, expected_size=None):
                     counter += len(data)
                     output_file.write(data)
 
-                    weights_warning.warning(
-                        "Downloading %s... (%6.2f/%6.2f MB)"
-                        % (url, counter / MEGABYTES, length / MEGABYTES)
-                    )
-                    progress_bar.progress(min(counter / length, 1.0))
+                    if length is not None:
+                        weights_warning.warning(
+                            "Downloading %s... (%6.2f/%6.2f MB)"
+                            % (url, counter / MEGABYTES, length / MEGABYTES)
+                        )
+                        progress_bar.progress(min(counter / length, 1.0))
+                    else:
+                        weights_warning.warning(
+                            "Downloading %s... (Unknown size)"
+                            % url
+                        )
     
     finally:
         if weights_warning is not None:
