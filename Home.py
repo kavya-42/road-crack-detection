@@ -25,7 +25,7 @@ st.set_page_config(
 
 st.image("./resource/banner.jpg", use_column_width="always")
 st.divider()
-st.title("Road Damage Detection Application")
+st.title("Road Crack Detection Using Deep Learning")
 
 st.markdown(
     """
@@ -46,8 +46,8 @@ ROOT = HERE.parent
 
 logger = logging.getLogger(__name__)
 
-MODEL_URL = "https://github.com/ShashangDhoriyani/RoadCrackDetection/raw/main/models/YOLOv8_Small_RDD.pt" 
-MODEL_LOCAL_PATH = ROOT / "./models/YOLOv8_Small_RDD.pt"
+MODEL_URL = "E:/PROJECT/RoadCrackDetection1/RoadCrackDetection1/models/YOLOv8_Small_RDD.pt" 
+MODEL_LOCAL_PATH = ROOT / "E:/PROJECT/RoadCrackDetection1/RoadCrackDetection1/models/YOLOv8_Small_RDD.pt"
 download_file(MODEL_URL, MODEL_LOCAL_PATH, expected_size=89569358)
 
 # Session-specific caching
